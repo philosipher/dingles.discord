@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philo Siphers Horoscopes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Cinzel', serif; background: linear-gradient(135deg, #1a0033, #660066); color: #fff; padding: 2vh; min-height: 100vh; overflow-x: hidden; position: relative; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://images.pexels.com/photos/957040/night-sky-2/pexels-photo-957040.jpeg') no-repeat center center/cover; opacity: 0.15; z-index: -1; animation: twinkle 10s infinite; }
+        .shooting-star { position: fixed; width: 3px; height: 3px; background: #ffffff; border-radius: 50%; z-index: 0; pointer-events: none; animation: shoot linear infinite, pulseGlow 0.5s infinite alternate; }
+        @keyframes shoot { 0% { transform: translate(0, 0) scale(1); opacity: 1; box-shadow: 0 0 20px #ffffff, 0 0 40px #ffcc00, 0 0 60px #cc33ff; } 100% { transform: translate(-400px, 400px) scale(0.5); opacity: 0; box-shadow: 0 0 10px #ffffff, 0 0 20px #ffcc00, 0 0 30px #cc33ff; } }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 20px #ffffff, 0 0 40px #ffcc00, 0 0 60px #cc33ff; } 100% { box-shadow: 0 0 30px #ffffff, 0 0 50px #ff9900, 0 0 80px #66ccff; } }
+        .shooting-star:nth-child(1) { top: 10%; left: 80%; animation-duration: 2s; animation-delay: 0s; }
+        .shooting-star:nth-child(2) { top: 20%; left: 60%; animation-duration: 2.5s; animation-delay: 1s; }
+        .shooting-star:nth-child(3) { top: 30%; left: 90%; animation-duration: 1.8s; animation-delay: 2s; }
+        .shooting-star:nth-child(4) { top: 40%; left: 70%; animation-duration: 2.2s; animation-delay: 3s; }
+        .shooting-star:nth-child(5) { top: 50%; left: 85%; animation-duration: 2.3s; animation-delay: 4s; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.3; } }
+        .container { max-width: 90vw; margin: 5vh auto; padding: 3vw; background: rgba(0, 0, 0, 0.6); border-radius: 15px; box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); position: relative; overflow: hidden; z-index: 1; }
+        .container::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 204, 0, 0.1), transparent); animation: cosmicPulse 15s infinite; z-index: -1; }
+        @keyframes cosmicPulse { 0%, 100% { transform: scale(1); opacity: 0.1; } 50% { transform: scale(1.2); opacity: 0.2; } }
+        h1 { color: #ffcc00; font-size: clamp(2em, 6vw, 3.5em); text-shadow: 0 0 15px #ffcc00, 0 0 25px #ff9900; animation: glow 2s infinite alternate; margin-bottom: 2vh; text-align: center; }
+        @keyframes glow { from { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900; } to { text-shadow: 0 0 20px #ffcc00, 0 0 30px #ff9900; } }
+        nav { background: rgba(75, 0, 130, 0.6); padding: 1vh; border-radius: 10px; margin-bottom: 2vh; position: relative; z-index: 1; }
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; }
+        nav ul li a { color: #fff; text-decoration: none; padding: 1vh 2vw; font-size: clamp(1em, 3vw, 1.3em); transition: all 0.3s ease; text-shadow: 0 0 5px #fff; }
+        nav ul li a:hover { color: #ffcc00; transform: scale(1.1); text-shadow: 0 0 10px #ffcc00; }
+        .input-group { margin: 2vh 0; opacity: 0; animation: slideIn 1s forwards; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        input, select { padding: 2vw; width: 100%; max-width: 300px; margin: 1vh auto; border: 2px solid #ffcc00; border-radius: 8px; font-size: clamp(0.9em, 3vw, 1.1em); display: block; background: rgba(255, 255, 255, 0.1); color: #fff; transition: all 0.3s; }
+        input:focus, select:focus { border-color: #ff9900; box-shadow: 0 0 10px #ff9900; outline: none; }
+        button { padding: 2vh 4vw; background: linear-gradient(45deg, #4b0082, #ffcc00); color: #fff; border: none; border-radius: 8px; font-size: clamp(1em, 3.5vw, 1.2em); cursor: pointer; transition: all 0.3s; width: 100%; max-width: 200px; margin: 2vh auto; display: block; text-shadow: 0 0 5px #000; animation: buttonPulse 2s infinite; }
+        @keyframes buttonPulse { 0%, 100% { box-shadow: 0 0 10px #ffcc00; } 50% { box-shadow: 0 0 20px #ff9900; } }
+        button:hover { transform: scale(1.05); background: linear-gradient(45deg, #ffcc00, #4b0082); }
+        #result { margin-top: 3vh; text-align: left; display: none; animation: starryFade 1s ease-in forwards; }
+        @keyframes starryFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .reading-list { list-style: none; padding: 0; }
+        .reading-list li { margin: 2vh 0; padding: 2vw; background: rgba(255, 255, 255, 0.1); border-radius: 10px; opacity: 0; animation: fadeIn 1s forwards; display: flex; align-items: center; transition: all 0.3s; }
+        .reading-list li:hover { background: rgba(255, 255, 255, 0.2); transform: translateX(10px); box-shadow: 0 0 15px rgba(255, 204, 0, 0.5); }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .reading-list li .symbol { width: clamp(40px, 10vw, 60px); height: clamp(40px, 10vw, 60px); margin-right: 2vw; border-radius: 50%; background: rgba(255, 204, 0, 0.3); display: flex; align-items: center; justify-content: center; font-size: clamp(1.5em, 5vw, 2em); color: #ffcc00; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); animation: symbolGlow 3s infinite; }
+        @keyframes symbolGlow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .reading-list li span { font-size: clamp(0.9em, 3vw, 1em); text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+        .past { color: #ff9999; font-weight: bold; }
+        .present { color: #99ff99; font-weight: bold; }
+        .future { color: #9999ff; font-weight: bold; }
+        #save-button { background: linear-gradient(45deg, #6a0dad, #ff9900); }
+        #share-button { background: linear-gradient(45deg, #00ccff, #ff33cc); }
+        #audio-toggle { position: fixed; bottom: 2vh; right: 2vw; padding: 1.5vh; background: #4b0082; color: #fff; border-radius: 50%; font-size: clamp(1em, 4vw, 1.5em); cursor: pointer; z-index: 10; box-shadow: 0 0 10px #ffcc00; }
+        @media (max-width: 768px) { nav ul { flex-direction: column; align-items: center; } .reading-list li { flex-direction: column; text-align: center; } .reading-list li .symbol { margin: 0 auto 1vh; } }
+    </style>
+</head>
+<body>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="container">
+        <h1>Philo Siphers Horoscopes</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="playMenuSound(); generateHoroscope()">Cast Your Cosmic Reading</a></li>
+            </ul>
+        </nav>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Your Sacred Name" required>
+        </div>
+        <div class="input-group" style="animation-delay: 0.2s;">
+            <input type="date" id="dob" required>
+        </div>
+        <div class="input-group" style="animation-delay: 0.4s;">
+            <select id="country" required>
+                <option value="" disabled selected>Realm of Origin</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="India">India</option>
+                <option value="China">China</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="input-group" style="animation-delay: 0.6s;">
+            <button onclick="playButtonSound(); generateHoroscope()">Unveil Celestial Truths</button>
+        </div>
+        <div id="result">
+            <ul class="reading-list" id="reading-list"></ul>
+            <button id="save-button" onclick="playButtonSound(); saveReading()">Preserve Your Prophecy</button>
+            <button id="share-button" onclick="playButtonSound(); shareReading()">Share Your Prophecy</button>
+        </div>
+    </div>
+    <audio id="bgMusic" loop></audio>
+    <audio id="menuSound"></audio>
+    <audio id="buttonSound"></audio>
+    <div id="audio-toggle" onclick="toggleAudio()">🔊</div>
+
+    <script>
+        const bgMusic = document.getElementById("bgMusic");
+        const menuSound = document.getElementById("menuSound");
+        const buttonSound = document.getElementById("buttonSound");
+        bgMusic.volume = 0.2;
+        menuSound.volume = 0.5;
+        buttonSound.volume = 0.5;
+
+        const staticMusicMap = {
+            "Spiritual": "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Contemporary/Kevin_MacLeod_-_Meditation_Impromptu_02.mp3",
+            "MenuClick": "https://freesound.org/data/previews/245/245645_4055516-lq.mp3",
+            "ButtonClick": "https://freesound.org/data/previews/242/242999_4055516-lq.mp3"
+        };
+
+        function toggleAudio() {
+            if (bgMusic.paused) { bgMusic.play(); document.getElementById("audio-toggle").textContent = "🔊"; }
+            else { bgMusic.pause(); document.getElementById("audio-toggle").textContent = "🔇"; }
+        }
+
+        function playMenuSound() { menuSound.src = staticMusicMap["MenuClick"]; menuSound.play(); }
+        function playButtonSound() { buttonSound.src = staticMusicMap["ButtonClick"]; buttonSound.play(); }
+        bgMusic.src = staticMusicMap["Spiritual"]; bgMusic.play();
+
+        function getZodiacSign(day, month) {
+            if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return "Aries";
+            if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) return "Taurus";
+            if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) return "Gemini";
+            if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) return "Cancer";
+            if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) return "Leo";
+            if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) return "Virgo";
+            if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) return "Libra";
+            if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) return "Scorpio";
+            if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) return "Sagittarius";
+            if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) return "Capricorn";
+            if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) return "Aquarius";
+            if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) return "Pisces";
+        }
+
+        function getElement(sign) {
+            const elements = { "Aries": "Fire", "Leo": "Fire", "Sagittarius": "Fire", "Taurus": "Earth", "Virgo": "Earth", "Capricorn": "Earth", "Gemini": "Air", "Libra": "Air", "Aquarius": "Air", "Cancer": "Water", "Scorpio": "Water", "Pisces": "Water" };
+            return elements[sign];
+        }
+
+        function getChineseZodiac(year) {
+            const animals = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"];
+            return animals[(year - 4) % 12];
+        }
+
+        function getCelticTree(day, month) {
+            if ((month === 12 && day >= 24) || (month === 1 && day <= 20)) return "Birch";
+            return "Oak";
+        }
+
+        function getNativeAmericanSign(day, month) {
+            if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return "Falcon";
+            return "Wolf";
+        }
+
+        function getNordicRune(day, month) {
+            if ((month === 12 && day >= 24) || (month === 1 && day <= 20)) return "Fehu";
+            return "Ansuz";
+        }
+
+        function getPaganSabbat(day, month) {
+            if (month === 2 && day >= 1 && day <= 2) return "Imbolc";
+            return "Samhain";
+        }
+
+        function getHinduNakshatra(day, month) {
+            if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return "Ashwini";
+            return "Krittika";
+        }
+
+        function getBuddhistElement(year) {
+            const elements = ["Wood", "Fire", "Earth", "Metal", "Water"];
+            return elements[(year - 4) % 5];
+        }
+
+        function getEgyptianGod(day, month) {
+            if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return "Osiris";
+            return "Anubis";
+        }
+
+        function getMayanSign(day, month) {
+            if ((month === 3 && day >= 21) || (month === 4 && day <= 9)) return "Crocodile";
+            return "Serpent";
+        }
+
+        function getLifePathNumber(day, month, year) {
+            const sum = (day + month + year).toString().split('').reduce((a, b) => a + parseInt(b), 0);
+            return sum > 9 ? getLifePathNumber(sum, 0, 0) : sum;
+        }
+
+        const symbolMap = {
+            "Aries": "♈", "Taurus": "♉", "Gemini": "♊", "Cancer": "♋", "Leo": "♌", "Virgo": "♍", "Libra": "♎", "Scorpio": "♏", "Sagittarius": "♐", "Capricorn": "♑", "Aquarius": "♒", "Pisces": "♓",
+            "Rat": "🐀", "Ox": "🐂", "Tiger": "🐅", "Rabbit": "🐇", "Dragon": "🐉", "Snake": "🐍", "Horse": "🐎", "Goat": "🐐", "Monkey": "🐒", "Rooster": "🐓", "Dog": "🐕", "Pig": "🐖",
+            "Birch": "🌿", "Oak": "🌳", "Falcon": "🦅", "Wolf": "🐺", "Fehu": "ᚠ", "Ansuz": "ᚨ", "Imbolc": "🕯️", "Samhain": "🎃", "Ashwini": "⭐", "Krittika": "🔥",
+            "Wood": "🌲", "Fire": "🔥", "Earth": "⛰️", "Metal": "⚙️", "Water": "💧", "Osiris": "𓀭", "Anubis": "🐺", "Crocodile": "🐊", "Serpent": "🐍",
+            "1": "1️⃣", "2": "2️⃣", "3": "3️⃣", "4": "4️⃣", "5": "5️⃣", "6": "6️⃣", "7": "7️⃣", "8": "8️⃣", "9": "9️⃣", "333": "🕉️",
+            "USA": "🇺🇸", "UK": "🇬🇧", "India": "🇮🇳", "China": "🇨🇳", "Brazil": "🇧🇷", "Other": "🌍", "MysticMeg": "🔮"
+        };
+
+        const staticReadings = {
+            "MysticMeg": { past: "Your fiery spirit conquered shadowed realms.", future: "Luck waits in three knocks at your door, work glows with promise ahead." },
+            "Aries": { past: "Mars guided you through trials of old.", future: "Victory dances ahead in embers." },
+            "Taurus": { past: "Roots grew deep in ancient soils.", future: "Prosperity blooms in your future." },
+            "Rat": { past: "Cunning outwitted fate’s traps.", future: "Opportunities shine like stars ahead." },
+            "Ox": { past: "Strength plowed through ancient fields.", future: "Steady gains build your tomorrow." },
+            "Birch": { past: "New beginnings dawned in frost.", future: "Fresh paths twist into your future." },
+            "Oak": { past: "Strength stood firm in ancient groves.", future: "Roots anchor your destiny." },
+            "Falcon": { past: "Wings soared over ancient storms.", future: "Leadership rises in your future." },
+            "Wolf": { past: "The pack howled through your past nights.", future: "Loyalty guides your tomorrow." },
+            "Fehu": { past: "Wealth flowed from primal wells.", future: "Riches weave your future fate." },
+            "Ansuz": { past: "Words of power shaped your dawn.", future: "Wisdom speaks your future." },
+            "Imbolc": { past: "A spark lit winter’s heart.", future: "Spring unfurls your future magic." },
+            "Samhain": { past: "Veils parted in your shadowed past.", future: "Mysteries unveil your tomorrow." },
+            "Ashwini": { past: "Stars healed your ancient wounds.", future: "Cosmic winds lift you ahead." },
+            "Krittika": { past: "Fire purified your primal soul.", future: "Blades of fate carve your future." },
+            "Wood": { past: "Growth sprouted in your early years.", future: "Branches reach for your destiny." },
+            "Fire": { past: "Flames forged your primal core.", future: "Warmth blazes your future path." },
+            "Osiris": { past: "Death and rebirth wove your tale.", future: "Eternity crowns your future." },
+            "Anubis": { past: "The jackal guarded your past steps.", future: "Judgment clears your tomorrow." },
+            "Crocodile": { past: "Ancient waters held your soul.", future: "Currents sweep you to rebirth." },
+            "Serpent": { past: "Coils of time wrapped your origin.", future: "Shedding skin reveals your fate." }
+        };
+
+        const mysticMegFallbacks = {
+            "Aries": "Passion ignites near a red door today - a stranger’s words spark your fire.",
+            "Taurus": "A coin found under moonlight brings luck today - trust the quiet voice within.",
+            "Gemini": "Twins whisper secrets by the crossroads today - choose the path with three stones.",
+            "Cancer": "A shell by the shore holds your truth today - the tide reveals a hidden gift.",
+            "Leo": "A golden shadow dances in your mirror today - fame knocks with a lion’s roar.",
+            "Virgo": "A book falls open to your fate today - precision unlocks a dusty treasure.",
+            "Libra": "Scales tip near a bridge today - a smile from the west balances your day.",
+            "Scorpio": "A scorpion’s sting heals by dusk today - a secret unravels in the shadows.",
+            "Sagittarius": "An arrow points to a distant bell today - adventure rings out your name.",
+            "Capricorn": "A stone rolls uphill today - success crowns your patient climb.",
+            "Aquarius": "A star blinks thrice above today - a wild idea flows like water.",
+            "Pisces": "Fish swim in your dreams today - a wave carries love to your shore."
+        };
+
+        async function fetchReading(url, fallback) {
+            if (navigator.onLine) {
+                try {
+                    const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+                    const response = await fetch(proxyUrl);
+                    const text = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(text, "text/html");
+                    const content = doc.querySelector(".horoscope-content p, .daily-horoscope p, p")?.textContent || fallback;
+                    if (content.includes("This demo of CORS Anywhere should only be used for development purposes")) {
+                        return fallback;
+                    }
+                    return content;
+                } catch (error) {
+                    console.log(`Fetch failed for ${url}:`, error);
+                    return fallback;
+                }
+            }
+            return fallback;
+        }
+
+        async function generateHoroscope() {
+            const name = document.getElementById("name").value;
+            const dob = document.getElementById("dob").value;
+            const country = document.getElementById("country").value;
+            const resultDiv = document.getElementById("result");
+            const readingList = document.getElementById("reading-list");
+
+            if (!name || !dob || !country) {
+                alert("Please fill all sacred fields.");
+                return;
+            }
+
+            const dobDate = new Date(dob);
+            const day = dobDate.getDate();
+            const month = dobDate.getMonth() + 1;
+            const year = dobDate.getFullYear();
+
+            const zodiac = getZodiacSign(day, month);
+            const element = getElement(zodiac);
+            const chinese = getChineseZodiac(year);
+            const celtic = getCelticTree(day, month);
+            const native = getNativeAmericanSign(day, month);
+            const nordic = getNordicRune(day, month);
+            const pagan = getPaganSabbat(day, month);
+            const hindu = getHinduNakshatra(day, month);
+            const buddhist = getBuddhistElement(year);
+            const egyptian = getEgyptianGod(day, month);
+            const mayan = getMayanSign(day, month);
+            const lifePath = getLifePathNumber(day, month, year);
+
+            const zodiacIndex = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"].indexOf(zodiac) + 1;
+            const chineseIndex = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"].indexOf(chinese) + 1;
+
+            const mysticPresent = await fetchReading(
+                `https://cafeastrology.com/${zodiac.toLowerCase()}dailyhoroscope.html`,
+                mysticMegFallbacks[zodiac] || "The cosmos spins a riddle for you today."
+            );
+            const westernPresent = await fetchReading(
+                `https://www.astrology.com/horoscope/daily/${zodiac.toLowerCase()}.html`,
+                "The stars align mysteriously today."
+            );
+            const chinesePresent = await fetchReading(
+                `https://www.horoscope.com/us/horoscopes/chinese/horoscope-chinese-daily.aspx?sign=${chineseIndex}`,
+                "Lunar whispers guide you now."
+            );
+            const celticPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `Renewal flows through ${celtic}’s boughs today.`
+            );
+            const nativePresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `Vision pierces today’s veil with ${native}’s strength.`
+            );
+            const nordicPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `Runes glow with ${nordic}’s wisdom today.`
+            );
+            const paganPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `The wheel turns with ${pagan}’s energy now.`
+            );
+            const hinduPresent = await fetchReading(
+                `https://www.astrosage.com/horoscope/daily-${zodiac.toLowerCase()}-horoscope.asp`,
+                `${hindu} aligns your stars today.`
+            );
+            const buddhistPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `${buddhist} balances your spirit today.`
+            );
+            const egyptianPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `${egyptian} watches over your present path.`
+            );
+            const mayanPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `Ancient cycles turn with ${mayan} today.`
+            );
+            const lifePathPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `Destiny shapes your ${lifePath} path now.`
+            );
+            const angelPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                "Guidance surrounds you with 333’s light today."
+            );
+            const countryPresent = await fetchReading(
+                `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
+                `Portents shimmer in ${country}’s skies now.`
+            );
+
+            const readings = [
+                `<div class="symbol">${symbolMap["MysticMeg"]}</div><span style="color:#ff33cc"><strong>Mystic Meg (${zodiac}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings["MysticMeg"].past}<br><span class="present">Present:</span> ${mysticPresent}<br><span class="future">Future:</span> ${staticReadings["MysticMeg"].future}</span>`,
+                `<div class="symbol">${symbolMap[zodiac]}</div><span style="color:#ff6666"><strong>Western (${zodiac}, ${element}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[zodiac]?.past || "Your past was forged in cosmic fire."}<br><span class="present">Present:</span> ${westernPresent}<br><span class="future">Future:</span> ${staticReadings[zodiac]?.future || "Destiny awaits in stardust."}</span>`,
+                `<div class="symbol">${symbolMap[chinese]}</div><span style="color:#ffcc66"><strong>Chinese (${chinese}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[chinese]?.past || "Ancient wisdom shaped your dawn."}<br><span class="present">Present:</span> ${chinesePresent}<br><span class="future">Future:</span> ${staticReadings[chinese]?.future || "The lunar path lights your way."}</span>`,
+                `<div class="symbol">${symbolMap[celtic]}</div><span style="color:#66ff66"><strong>Celtic (${celtic}):</strong><br><span class="past">Past:</span> ${name}, beneath ${country}’s skies, ${staticReadings[celtic]?.past || "Roots grew deep in sacred earth."}<br><span class="present">Present:</span> ${celticPresent}<br><span class="future">Future:</span> ${staticReadings[celtic]?.future || "Branches reach for tomorrow’s light."}</span>`,
+                `<div class="symbol">${symbolMap[native]}</div><span style="color:#66ccff"><strong>Native (${native}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[native]?.past || "Spirits guided your first steps."}<br><span class="present">Present:</span> ${nativePresent}<br><span class="future">Future:</span> ${staticReadings[native]?.future || "The wind carries your destiny."}</span>`,
+                `<div class="symbol">${symbolMap[nordic]}</div><span style="color:#cc66ff"><strong>Nordic (${nordic}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[nordic]?.past || "Runes carved your ancient tale."}<br><span class="present">Present:</span> ${nordicPresent}<br><span class="future">Future:</span> ${staticReadings[nordic]?.future || "Fate’s threads weave ahead."}</span>`,
+                `<div class="symbol">${symbolMap[pagan]}</div><span style="color:#ff99cc"><strong>Pagan (${pagan}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[pagan]?.past || "Cycles turned in your dawn."}<br><span class="present">Present:</span> ${paganPresent}<br><span class="future">Future:</span> ${staticReadings[pagan]?.future || "The wheel spins toward glory."}</span>`,
+                `<div class="symbol">${symbolMap[hindu]}</div><span style="color:#66ffff"><strong>Hindu (${hindu}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[hindu]?.past || "Stars sang at your birth."}<br><span class="present">Present:</span> ${hinduPresent}<br><span class="future">Future:</span> ${staticReadings[hindu]?.future || "Cosmic tides lift you forward."}</span>`,
+                `<div class="symbol">${symbolMap[buddhist]}</div><span style="color:#ff9966"><strong>Buddhist (${buddhist}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[buddhist]?.past || "Elements shaped your origin."}<br><span class="present">Present:</span> ${buddhistPresent}<br><span class="future">Future:</span> ${staticReadings[buddhist]?.future || "Harmony awaits ahead."}</span>`,
+                `<div class="symbol">${symbolMap[egyptian]}</div><span style="color:#ccff66"><strong>Egyptian (${egyptian}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[egyptian]?.past || "Nile waters washed your past."}<br><span class="present">Present:</span> ${egyptianPresent}<br><span class="future">Future:</span> ${staticReadings[egyptian]?.future || "Gods guard your tomorrow."}</span>`,
+                `<div class="symbol">${symbolMap[mayan]}</div><span style="color:#66cc99"><strong>Mayan (${mayan}):</strong><br><span class="past">Past:</span> ${name}, in ${country}, ${staticReadings[mayan]?.past || "Ancient cycles birthed you."}<br><span class="present">Present:</span> ${mayanPresent}<br><span class="future">Future:</span> ${staticReadings[mayan]?.future || "Time turns toward your fate."}</span>`,
+                `<div class="symbol">${symbolMap[lifePath.toString()]}</div><span style="color:#ffcc99"><strong>Life Path (${lifePath}):</strong><br><span class="past">Past:</span> ${name}, your ${lifePath} carved ${country}’s terrain.<br><span class="present">Present:</span> ${lifePathPresent}<br><span class="future">Future:</span> The ${lifePath} illuminates your journey ahead.</span>`,
+                `<div class="symbol">${symbolMap["333"]}</div><span style="color:#99ccff"><strong>Angel Number (333):</strong><br><span class="past">Past:</span> ${name}, in ${country}, the trinity of 3 cradled your spirit.<br><span class="present">Present:</span> ${angelPresent}<br><span class="future">Future:</span> Ascension calls in ${country} ahead.</span>`,
+                `<div class="symbol">${symbolMap[country]}</div><span style="color:#cc99ff"><strong>${country} Omens:</strong><br><span class="past">Past:</span> ${name}, ${country}’s ancient signs marked your birth.<br><span class="present">Present:</span> ${countryPresent}<br><span class="future">Future:</span> ${country}’s omens align for your future glory.</span>`
+            ];
+
+            readingList.innerHTML = readings.map((item, i) => `<li style="animation-delay: ${i * 0.3}s;">${item}</li>`).join('');
+            resultDiv.style.display = "block";
+        }
+
+        function saveReading() {
+            const name = document.getElementById("name").value || "Unknown";
+            const readingList = document.getElementById("reading-list").innerHTML;
+            const textContent = `Philo Siphers Horoscope for ${name}\n\n${readingList.replace(/<[^>]+>/g, '').replace(/<br>/g, '\n')}`;
+            const textBlob = new Blob([textContent], { type: "text/plain" });
+            const textLink = document.createElement("a");
+            textLink.href = URL.createObjectURL(textBlob);
+            textLink.download = `${name}_horoscope.txt`;
+            textLink.click();
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFont("helvetica");
+            doc.setFontSize(12);
+            doc.setTextColor(255, 204, 0);
+            doc.text(`Philo Siphers Horoscope for ${name}`, 10, 10);
+            doc.setTextColor(255, 255, 255);
+            let y = 20;
+            document.querySelectorAll("#reading-list li span").forEach((span) => {
+                const text = span.textContent;
+                doc.text(text, 10, y, { maxWidth: 180 });
+                y += 15;
+                if (y > 270) { doc.addPage(); y = 10; }
+            });
+            doc.save(`${name}_horoscope.pdf`);
+        }
+
+        function shareReading() {
+            const name = document.getElementById("name").value || "Unknown";
+            const readingList = document.getElementById("reading-list").innerHTML;
+            const textContent = `Philo Siphers Horoscope for ${name}\n\n${readingList.replace(/<[^>]+>/g, '').replace(/<br>/g, '\n')}`;
+            navigator.clipboard.writeText(textContent).then(() => {
+                alert("Your cosmic prophecy has been copied to the clipboard!");
+            }).catch(() => {
+                alert("Failed to copy to clipboard. Please try again.");
+            });
+        }
+    </script>
+</body>
+</html>
