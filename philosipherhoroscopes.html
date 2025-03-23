@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philo Siphers Horoscopes</title>
+    <title>Dingles Readings</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
@@ -22,8 +22,9 @@
         .container { max-width: 90vw; margin: 5vh auto; padding: 3vw; background: rgba(0, 0, 0, 0.6); border-radius: 15px; box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); position: relative; overflow: hidden; z-index: 1; }
         .container::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 204, 0, 0.1), transparent); animation: cosmicPulse 15s infinite; z-index: -1; }
         @keyframes cosmicPulse { 0%, 100% { transform: scale(1); opacity: 0.1; } 50% { transform: scale(1.2); opacity: 0.2; } }
-        h1 { color: #ffcc00; font-size: clamp(2em, 6vw, 3.5em); text-shadow: 0 0 15px #ffcc00, 0 0 25px #ff9900; animation: glow 2s infinite alternate; margin-bottom: 2vh; text-align: center; }
-        @keyframes glow { from { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900; } to { text-shadow: 0 0 20px #ffcc00, 0 0 30px #ff9900; } }
+        h1 { color: #ffcc00; font-size: clamp(3em, 8vw, 5em); text-shadow: 0 0 15px #ffcc00, 0 0 25px #ff9900, 0 0 35px #cc33ff; animation: magicSparkle 2s infinite; margin-bottom: 2vh; text-align: center; line-height: 1.2; }
+        h1 small { font-size: clamp(0.6em, 2vw, 0.9em); color: #cc33ff; text-shadow: 0 0 5px #cc33ff, 0 0 10px #ff33cc; }
+        @keyframes magicSparkle { 0% { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900, 0 0 30px #cc33ff; transform: scale(1); opacity: 1; } 50% { text-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900, 0 0 60px #cc33ff; transform: scale(1.05); opacity: 0.9; } 100% { text-shadow: 0 0 15px #ffcc00, 0 0 25px #ff9900, 0 0 35px #cc33ff; transform: scale(1); opacity: 1; } }
         nav { background: rgba(75, 0, 130, 0.6); padding: 1vh; border-radius: 10px; margin-bottom: 2vh; position: relative; z-index: 1; }
         nav ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; }
         nav ul li a { color: #fff; text-decoration: none; padding: 1vh 2vw; font-size: clamp(1em, 3vw, 1.3em); transition: all 0.3s ease; text-shadow: 0 0 5px #fff; }
@@ -60,7 +61,7 @@
     <div class="shooting-star"></div>
     <div class="shooting-star"></div>
     <div class="container">
-        <h1>Philo Siphers Horoscopes</h1>
+        <h1>Dingles Readings<br><small>Made by Philo Sipher</small></h1>
         <nav>
             <ul>
                 <li><a href="#" onclick="playMenuSound(); generateHoroscope()">Cast Your Cosmic Reading</a></li>
@@ -75,12 +76,200 @@
         <div class="input-group" style="animation-delay: 0.4s;">
             <select id="country" required>
                 <option value="" disabled selected>Realm of Origin</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="India">India</option>
-                <option value="China">China</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Albania">Albania</option>
+                <option value="Algeria">Algeria</option>
+                <option value="Andorra">Andorra</option>
+                <option value="Angola">Angola</option>
+                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Armenia">Armenia</option>
+                <option value="Australia">Australia</option>
+                <option value="Austria">Austria</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <option value="Bahamas">Bahamas</option>
+                <option value="Bahrain">Bahrain</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Barbados">Barbados</option>
+                <option value="Belarus">Belarus</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Belize">Belize</option>
+                <option value="Benin">Benin</option>
+                <option value="Bhutan">Bhutan</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                <option value="Botswana">Botswana</option>
                 <option value="Brazil">Brazil</option>
-                <option value="Other">Other</option>
+                <option value="Brunei">Brunei</option>
+                <option value="Bulgaria">Bulgaria</option>
+                <option value="Burkina Faso">Burkina Faso</option>
+                <option value="Burundi">Burundi</option>
+                <option value="Cabo Verde">Cabo Verde</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Cameroon">Cameroon</option>
+                <option value="Canada">Canada</option>
+                <option value="Central African Republic">Central African Republic</option>
+                <option value="Chad">Chad</option>
+                <option value="Chile">Chile</option>
+                <option value="China">China</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Comoros">Comoros</option>
+                <option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option>
+                <option value="Congo, Republic of the">Congo, Republic of the</option>
+                <option value="Costa Rica">Costa Rica</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Cuba">Cuba</option>
+                <option value="Cyprus">Cyprus</option>
+                <option value="Czechia">Czechia</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Djibouti">Djibouti</option>
+                <option value="Dominica">Dominica</option>
+                <option value="Dominican Republic">Dominican Republic</option>
+                <option value="East Timor">East Timor</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Egypt">Egypt</option>
+                <option value="El Salvador">El Salvador</option>
+                <option value="Equatorial Guinea">Equatorial Guinea</option>
+                <option value="Eritrea">Eritrea</option>
+                <option value="Estonia">Estonia</option>
+                <option value="Eswatini">Eswatini</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="Fiji">Fiji</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="Gabon">Gabon</option>
+                <option value="Gambia">Gambia</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Germany">Germany</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Greece">Greece</option>
+                <option value="Grenada">Grenada</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Guinea">Guinea</option>
+                <option value="Guinea-Bissau">Guinea-Bissau</option>
+                <option value="Guyana">Guyana</option>
+                <option value="Haiti">Haiti</option>
+                <option value="Honduras">Honduras</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Iceland">Iceland</option>
+                <option value="India">India</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Iran">Iran</option>
+                <option value="Iraq">Iraq</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Israel">Israel</option>
+                <option value="Italy">Italy</option>
+                <option value="Jamaica">Jamaica</option>
+                <option value="Japan">Japan</option>
+                <option value="Jordan">Jordan</option>
+                <option value="Kazakhstan">Kazakhstan</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Kiribati">Kiribati</option>
+                <option value="Korea, North">Korea, North</option>
+                <option value="Korea, South">Korea, South</option>
+                <option value="Kuwait">Kuwait</option>
+                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                <option value="Laos">Laos</option>
+                <option value="Latvia">Latvia</option>
+                <option value="Lebanon">Lebanon</option>
+                <option value="Lesotho">Lesotho</option>
+                <option value="Liberia">Liberia</option>
+                <option value="Libya">Libya</option>
+                <option value="Liechtenstein">Liechtenstein</option>
+                <option value="Lithuania">Lithuania</option>
+                <option value="Luxembourg">Luxembourg</option>
+                <option value="Madagascar">Madagascar</option>
+                <option value="Malawi">Malawi</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Maldives">Maldives</option>
+                <option value="Mali">Mali</option>
+                <option value="Malta">Malta</option>
+                <option value="Marshall Islands">Marshall Islands</option>
+                <option value="Mauritania">Mauritania</option>
+                <option value="Mauritius">Mauritius</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Micronesia">Micronesia</option>
+                <option value="Moldova">Moldova</option>
+                <option value="Monaco">Monaco</option>
+                <option value="Mongolia">Mongolia</option>
+                <option value="Montenegro">Montenegro</option>
+                <option value="Morocco">Morocco</option>
+                <option value="Mozambique">Mozambique</option>
+                <option value="Myanmar">Myanmar</option>
+                <option value="Namibia">Namibia</option>
+                <option value="Nauru">Nauru</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Nicaragua">Nicaragua</option>
+                <option value="Niger">Niger</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="North Macedonia">North Macedonia</option>
+                <option value="Norway">Norway</option>
+                <option value="Oman">Oman</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Palau">Palau</option>
+                <option value="Palestine">Palestine</option>
+                <option value="Panama">Panama</option>
+                <option value="Papua New Guinea">Papua New Guinea</option>
+                <option value="Paraguay">Paraguay</option>
+                <option value="Peru">Peru</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Poland">Poland</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Qatar">Qatar</option>
+                <option value="Romania">Romania</option>
+                <option value="Russia">Russia</option>
+                <option value="Rwanda">Rwanda</option>
+                <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                <option value="Saint Lucia">Saint Lucia</option>
+                <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                <option value="Samoa">Samoa</option>
+                <option value="San Marino">San Marino</option>
+                <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Serbia">Serbia</option>
+                <option value="Seychelles">Seychelles</option>
+                <option value="Sierra Leone">Sierra Leone</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Slovakia">Slovakia</option>
+                <option value="Slovenia">Slovenia</option>
+                <option value="Solomon Islands">Solomon Islands</option>
+                <option value="Somalia">Somalia</option>
+                <option value="South Africa">South Africa</option>
+                <option value="South Sudan">South Sudan</option>
+                <option value="Spain">Spain</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="Sudan">Sudan</option>
+                <option value="Suriname">Suriname</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Syria">Syria</option>
+                <option value="Tajikistan">Tajikistan</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Togo">Togo</option>
+                <option value="Tonga">Tonga</option>
+                <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                <option value="Tunisia">Tunisia</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Turkmenistan">Turkmenistan</option>
+                <option value="Tuvalu">Tuvalu</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United States">United States</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Uzbekistan">Uzbekistan</option>
+                <option value="Vanuatu">Vanuatu</option>
+                <option value="Vatican City">Vatican City</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Yemen">Yemen</option>
+                <option value="Zambia">Zambia</option>
+                <option value="Zimbabwe">Zimbabwe</option>
             </select>
         </div>
         <div class="input-group" style="animation-delay: 0.6s;">
@@ -200,65 +389,65 @@
         };
 
         const staticReadings = {
-            "MysticMeg": { past: "Beneath the veiled moons of your youth, ${name}, a sacred fire burned through ${country}’s mists, forging your spirit in trials only the stars recall.", future: "Three threads of fate will cross your path in ${country}, ${name}—a knock, a whisper, a shadow—guiding you to a destiny where love and labor bloom as one." },
-            "Aries": { past: "In the crimson dawn of ${country}, ${name}, Mars anointed your soul with a warrior’s flame, leading you through battles of will to claim your inner throne.", future: "A fiery comet streaks toward your horizon, ${name}—embrace the bold call to lead, for in ${country}’s embrace, your courage will carve a legacy in the stars." },
-            "Taurus": { past: "Rooted in ${country}’s ancient earth, ${name}, your spirit grew like a steadfast oak, drawing strength from silent seasons of patience and toil.", future: "A golden harvest awaits you, ${name}, in ${country}’s fertile fields—trust the slow dance of time, for abundance flows to those who nurture their roots." },
-            "Gemini": { past: "In ${country}’s windswept realms, ${name}, your twin souls danced through shifting skies, weaving words of power from the ether’s breath.", future: "A double star rises in ${country}, ${name}—seek the mirror of truth, for your voice will bridge worlds and guide lost hearts home." },
-            "Cancer": { past: "Beneath ${country}’s moonlit tides, ${name}, your heart cradled the ocean’s secrets, growing strong in the ebb of hidden currents.", future: "A silver wave crashes in ${country}, ${name}—trust your intuition, for it will lead you to a sanctuary of love and eternal renewal." },
-            "Leo": { past: "In ${country}’s golden dawn, ${name}, the Sun crowned your spirit with regal fire, illuminating paths through shadows with your roar.", future: "A lion’s throne awaits in ${country}, ${name}—shine unapologetically, for your light will draw followers to a kingdom of joy." },
-            "Virgo": { past: "Amid ${country}’s quiet fields, ${name}, your soul wove precision into the fabric of existence, healing the world with humble hands.", future: "A harvest moon glows in ${country}, ${name}—perfect your craft, for your diligence will unveil a treasure of purpose." },
-            "Libra": { past: "In ${country}’s balanced skies, ${name}, your spirit sought harmony, tipping scales with grace through storms of discord.", future: "A dove flies over ${country}, ${name}—choose peace, for your equilibrium will mend bridges and birth beauty." },
-            "Scorpio": { past: "Deep in ${country}’s shadowed depths, ${name}, your soul danced with the scorpion’s sting, rising anew from ashes of the past.", future: "A phoenix soars in ${country}, ${name}—embrace transformation, for your power will pierce veils and claim the eternal." },
-            "Sagittarius": { past: "Across ${country}’s wild plains, ${name}, your arrow flew free, seeking truth in the vastness of untamed horizons.", future: "A distant star calls in ${country}, ${name}—ride the wind, for your quest will unveil wisdom beyond the known." },
-            "Capricorn": { past: "On ${country}’s rugged peaks, ${name}, your spirit climbed with goat’s resolve, building foundations from stone and time.", future: "A summit shines in ${country}, ${name}—persist, for your ambition will crown you with enduring glory." },
-            "Aquarius": { past: "In ${country}’s electric air, ${name}, your soul sparked revolutions, pouring water of vision into a thirsty world.", future: "A storm brews in ${country}, ${name}—dream boldly, for your rebellion will reshape the tides of tomorrow." },
-            "Pisces": { past: "Beneath ${country}’s mystic waves, ${name}, your spirit swam in dreams, weaving compassion from the ocean’s depths.", future: "A fish leaps in ${country}, ${name}—surrender to the flow, for your empathy will heal and unite the unseen." },
-            "Rat": { past: "In the shadowed alleys of ${country}, ${name}, your cunning wove a tapestry of survival, outsmarting fate with lunar tides.", future: "A silver key glints in ${country}’s dawn, ${name}—seize it, for doors of opportunity swing wide under the Rat’s stars." },
-            "Ox": { past: "Through ${country}’s furrowed fields, ${name}, your strength plowed the earth, bearing burdens with a quiet, unyielding heart.", future: "A steady dawn breaks in ${country}, ${name}—endure, for your labor will yield a harvest of unshakable peace." },
-            "Tiger": { past: "In ${country}’s fierce jungles, ${name}, your roar shook the silence, stalking destiny with a predator’s grace.", future: "A striped shadow prowls ${country}, ${name}—strike boldly, for your ferocity will claim a throne of power." },
-            "Rabbit": { past: "Beneath ${country}’s gentle moons, ${name}, your spirit hopped through life’s maze, finding safety in swift leaps of faith.", future: "A burrow glows in ${country}, ${name}—trust your instincts, for your agility will lead to a haven of joy." },
-            "Dragon": { past: "Above ${country}’s ancient skies, ${name}, your wings stirred storms, breathing fire into the void of forgotten ages.", future: "A dragon’s flame lights ${country}, ${name}—rise fearlessly, for your might will forge a legend eternal." },
-            "Snake": { past: "In ${country}’s coiled shadows, ${name}, your wisdom slithered through secrets, shedding skins to reveal your truth.", future: "A serpent’s eye gleams in ${country}, ${name}—shed old fears, for your insight will unravel mysteries of the soul." },
-            "Horse": { past: "Across ${country}’s boundless plains, ${name}, your hooves thundered free, chasing horizons with untamed spirit.", future: "A wild gallop awaits in ${country}, ${name}—run unbound, for your journey will break chains and find freedom." },
-            "Goat": { past: "On ${country}’s steep cliffs, ${name}, your sure feet climbed, balancing dreams against the winds of challenge.", future: "A peak beckons in ${country}, ${name}—ascend steadily, for your resolve will plant a flag of triumph." },
-            "Monkey": { past: "In ${country}’s playful canopy, ${name}, your mischief swung through branches, crafting joy from chaos with clever hands.", future: "A trickster’s laugh echoes in ${country}, ${name}—play wisely, for your ingenuity will unlock unexpected riches." },
-            "Rooster": { past: "At ${country}’s fiery dawn, ${name}, your crow heralded light, strutting through life with a proud, vibrant plume.", future: "A sunrise calls in ${country}, ${name}—proclaim your truth, for your boldness will awaken a new day of glory." },
-            "Dog": { past: "In ${country}’s loyal fields, ${name}, your heart guarded the pack, standing firm through nights of howling winds.", future: "A faithful star shines in ${country}, ${name}—protect your kin, for your devotion will forge an unbreakable bond." },
-            "Pig": { past: "Amid ${country}’s rich earth, ${name}, your soul rooted in abundance, finding treasure in the mud of honest days.", future: "A feast spreads in ${country}, ${name}—savor the moment, for your generosity will reap a bounty of love." },
-            "Birch": { past: "Under ${country}’s frost-kissed skies, ${name}, the Birch whispered renewal into your bones, birthing your spirit anew in winter’s embrace.", future: "A fresh wind carries you in ${country}, ${name}—shed old skins, for the Birch heralds a path of rebirth." },
-            "Oak": { past: "In ${country}’s ancient groves, ${name}, your roots sank deep, weathering storms with the Oak’s unyielding might.", future: "A mighty trunk stands in ${country}, ${name}—hold firm, for your strength will shelter generations to come." },
-            "Falcon": { past: "Above ${country}’s wild skies, ${name}, your wings pierced the clouds, seeing truths hidden from earthbound eyes.", future: "A high perch awaits in ${country}, ${name}—soar with vision, for your clarity will guide the lost." },
-            "Wolf": { past: "Through ${country}’s moonlit wilds, ${name}, your howl bound the pack, running fierce and free in nature’s song.", future: "A lunar call rises in ${country}, ${name}—lead with loyalty, for your pack will conquer any night." },
-            "Fehu": { past: "In ${country}’s primal wells, ${name}, your spirit drew wealth from the earth, etching prosperity in rune-lit stone.", future: "A golden rune glows in ${country}, ${name}—claim your bounty, for your efforts will multiply under Fehu’s gaze." },
-            "Ansuz": { past: "Amid ${country}’s whispering winds, ${name}, your voice carried divine breath, shaping fate with words of power.", future: "A sacred chant sounds in ${country}, ${name}—speak with wisdom, for your words will weave a tapestry of truth." },
-            "Imbolc": { past: "In ${country}’s winter heart, ${name}, a spark of Imbolc lit your soul, warming the dark with promises of spring.", future: "A flame flickers in ${country}, ${name}—nurture it, for your light will bloom into a season of miracles." },
-            "Samhain": { past: "Through ${country}’s veiled dusk, ${name}, Samhain parted the mists, revealing ancestors’ whispers in your blood.", future: "A shadow lifts in ${country}, ${name}—honor the unseen, for their guidance will unveil your deepest destiny." },
-            "Ashwini": { past: "Under ${country}’s starry dawn, ${name}, Ashwini’s horses galloped through your birth, healing wounds with celestial speed.", future: "A swift star races in ${country}, ${name}—ride its energy, for your journey will mend and uplift the spirit." },
-            "Krittika": { past: "In ${country}’s fiery cradle, ${name}, Krittika’s blades purified your soul, cutting ties to shadows of old.", future: "A sharp flame burns in ${country}, ${name}—wield it, for your clarity will sever doubt and forge purpose." },
-            "Wood": { past: "In ${country}’s green embrace, ${name}, your spirit sprouted like wood, bending with life’s winds to grow tall.", future: "A new branch reaches in ${country}, ${name}—stretch upward, for your growth will touch the heavens." },
-            "Fire": { past: "Amid ${country}’s blazing heart, ${name}, your soul was forged in fire, burning bright through trials of ash.", future: "A spark leaps in ${country}, ${name}—fan it, for your passion will illuminate paths unseen." },
-            "Earth": { past: "In ${country}’s steady ground, ${name}, your spirit rooted deep, holding fast through quakes of fate.", future: "A mountain rises in ${country}, ${name}—stand firm, for your stability will anchor a world in flux." },
-            "Metal": { past: "Through ${country}’s forged veins, ${name}, your soul rang like metal, tempered by the hammer of time.", future: "A blade shines in ${country}, ${name}—sharpen it, for your resolve will cut through chaos to truth." },
-            "Water": { past: "In ${country}’s flowing streams, ${name}, your spirit danced with water, adapting to life’s endless tides.", future: "A river bends in ${country}, ${name}—flow with it, for your grace will carry you to depths of peace." },
-            "Osiris": { past: "In ${country}’s sands of rebirth, ${name}, Osiris wove your soul through cycles of death and dawn.", future: "A green shoot breaks in ${country}, ${name}—rise again, for your renewal will defy the grave." },
-            "Anubis": { past: "Beneath ${country}’s twilight gaze, ${name}, Anubis weighed your heart, guarding your steps through shadowlands.", future: "A jackal watches in ${country}, ${name}—trust its vigilance, for your path will balance justice and mercy." },
-            "Crocodile": { past: "In ${country}’s primal waters, ${name}, the Crocodile bore you through currents, fierce and unyielding.", future: "A ripple stirs in ${country}, ${name}—strike with purpose, for your strength will seize the day." },
-            "Serpent": { past: "Through ${country}’s coiled mists, ${name}, the Serpent shed your past, revealing wisdom in its scales.", future: "A hiss echoes in ${country}, ${name}—embrace change, for your rebirth will unlock ancient truths." }
+            "MysticMeg": { past: "Beneath veiled moons of youth, a sacred fire burned through misty trials, forging a spirit the stars alone recall.", future: "Three threads of fate will cross—a knock, a whisper, a shadow—guiding to a destiny where love and labor bloom as one." },
+            "Aries": { past: "In crimson dawn, Mars anointed the soul with a warrior’s flame, leading through battles of will to claim an inner throne.", future: "A fiery comet streaks toward the horizon—embrace the bold call to lead, for courage will carve a legacy in the stars." },
+            "Taurus": { past: "Rooted in ancient earth, the spirit grew like a steadfast oak, drawing strength from silent seasons of patience and toil.", future: "A golden harvest awaits—trust the slow dance of time, for abundance flows to those who nurture their roots." },
+            "Gemini": { past: "In windswept realms, twin souls danced through shifting skies, weaving words of power from the ether’s breath.", future: "A double star rises—seek the mirror of truth, for your voice will bridge worlds and guide lost hearts home." },
+            "Cancer": { past: "Beneath moonlit tides, the heart cradled the ocean’s secrets, growing strong in the ebb of hidden currents.", future: "A silver wave crashes—trust intuition, for it will lead to a sanctuary of love and eternal renewal." },
+            "Leo": { past: "In golden dawn, the Sun crowned the spirit with regal fire, illuminating paths through shadows with a roar.", future: "A lion’s throne awaits—shine unapologetically, for your light will draw followers to a kingdom of joy." },
+            "Virgo": { past: "Amid quiet fields, the soul wove precision into existence, healing the world with humble hands.", future: "A harvest moon glows—perfect the craft, for diligence will unveil a treasure of purpose." },
+            "Libra": { past: "In balanced skies, the spirit sought harmony, tipping scales with grace through storms of discord.", future: "A dove flies overhead—choose peace, for equilibrium will mend bridges and birth beauty." },
+            "Scorpio": { past: "Deep in shadowed depths, the soul danced with the scorpion’s sting, rising anew from ashes of the past.", future: "A phoenix soars—embrace transformation, for power will pierce veils and claim the eternal." },
+            "Sagittarius": { past: "Across wild plains, the arrow flew free, seeking truth in the vastness of untamed horizons.", future: "A distant star calls—ride the wind, for the quest will unveil wisdom beyond the known." },
+            "Capricorn": { past: "On rugged peaks, the spirit climbed with goat’s resolve, building foundations from stone and time.", future: "A summit shines—persist, for ambition will crown with enduring glory." },
+            "Aquarius": { past: "In electric air, the soul sparked revolutions, pouring water of vision into a thirsty world.", future: "A storm brews—dream boldly, for rebellion will reshape the tides of tomorrow." },
+            "Pisces": { past: "Beneath mystic waves, the spirit swam in dreams, weaving compassion from the ocean’s depths.", future: "A fish leaps—surrender to the flow, for empathy will heal and unite the unseen." },
+            "Rat": { past: "In shadowed alleys, cunning wove a tapestry of survival, outsmarting fate with lunar tides.", future: "A silver key glints in dawn—seize it with nimble spirit, for doors of opportunity swing wide under watchful stars." },
+            "Ox": { past: "Through furrowed fields, strength plowed the earth, bearing burdens with a quiet, unyielding heart.", future: "A steady dawn breaks—endure, for labor will yield a harvest of unshakable peace." },
+            "Tiger": { past: "In fierce jungles, the roar shook silence, stalking destiny with a predator’s grace.", future: "A striped shadow prowls—strike boldly, for ferocity will claim a throne of power." },
+            "Rabbit": { past: "Beneath gentle moons, the spirit hopped through life’s maze, finding safety in swift leaps of faith.", future: "A burrow glows—trust instincts, for agility will lead to a haven of joy." },
+            "Dragon": { past: "Above ancient skies, wings stirred storms, breathing fire into the void of forgotten ages.", future: "A dragon’s flame lights the way—rise fearlessly, for might will forge a legend eternal." },
+            "Snake": { past: "In coiled shadows, wisdom slithered through secrets, shedding skins to reveal truth.", future: "A serpent’s eye gleams—shed old fears, for insight will unravel mysteries of the soul." },
+            "Horse": { past: "Across boundless plains, hooves thundered free, chasing horizons with untamed spirit.", future: "A wild gallop awaits—run unbound, for the journey will break chains and find freedom." },
+            "Goat": { past: "On steep cliffs, sure feet climbed, balancing dreams against winds of challenge.", future: "A peak beckons—ascend steadily, for resolve will plant a flag of triumph." },
+            "Monkey": { past: "In playful canopy, mischief swung through branches, crafting joy from chaos with clever hands.", future: "A trickster’s laugh echoes—play wisely, for ingenuity will unlock unexpected riches." },
+            "Rooster": { past: "At fiery dawn, the crow heralded light, strutting through life with a proud, vibrant plume.", future: "A sunrise calls—proclaim truth, for boldness will awaken a new day of glory." },
+            "Dog": { past: "In loyal fields, the heart guarded the pack, standing firm through nights of howling winds.", future: "A faithful star shines—protect the kin, for devotion will forge an unbreakable bond." },
+            "Pig": { past: "Amid rich earth, the soul rooted in abundance, finding treasure in the mud of honest days.", future: "A feast spreads—savor the moment, for generosity will reap a bounty of love." },
+            "Birch": { past: "Under frost-kissed skies, the Birch whispered renewal into bones, birthing the spirit anew in winter’s embrace.", future: "A fresh wind carries forward—shed old skins, for the Birch heralds a path of rebirth." },
+            "Oak": { past: "In ancient groves, roots sank deep, weathering storms with unyielding might.", future: "A mighty trunk stands—hold firm, for strength will shelter generations to come." },
+            "Falcon": { past: "Above wild skies, wings pierced clouds, seeing truths hidden from earthbound eyes.", future: "A high perch awaits—soar with vision, for clarity will guide the lost." },
+            "Wolf": { past: "Through moonlit wilds, the howl bound the pack, running fierce and free in nature’s song.", future: "A lunar call rises—lead with loyalty, for the pack will conquer any night." },
+            "Fehu": { past: "In primal wells, the spirit drew wealth from the earth, etching prosperity in rune-lit stone.", future: "A golden rune glows—claim the bounty, for efforts will multiply under Fehu’s gaze." },
+            "Ansuz": { past: "Amid whispering winds, the voice carried divine breath, shaping fate with words of power.", future: "A sacred chant sounds—speak with wisdom, for words will weave a tapestry of truth." },
+            "Imbolc": { past: "In winter’s heart, a spark of Imbolc lit the soul, warming the dark with promises of spring.", future: "A flame flickers—nurture it, for light will bloom into a season of miracles." },
+            "Samhain": { past: "Through veiled dusk, Samhain parted the mists, revealing ancestors’ whispers in the blood.", future: "A shadow lifts—honor the unseen, for their guidance will unveil the deepest destiny." },
+            "Ashwini": { past: "Under starry dawn, Ashwini’s horses galloped through birth, healing wounds with celestial speed.", future: "A swift star races—ride its energy, for the journey will mend and uplift the spirit." },
+            "Krittika": { past: "In fiery cradle, Krittika’s blades purified the soul, cutting ties to shadows of old.", future: "A sharp flame burns—wield it, for clarity will sever doubt and forge purpose." },
+            "Wood": { past: "In green embrace, the spirit sprouted like wood, bending with life’s winds to grow tall.", future: "A new branch reaches—stretch upward, for growth will touch the heavens." },
+            "Fire": { past: "Amid blazing heart, the soul was forged in fire, burning bright through trials of ash.", future: "A spark leaps—fan it, for passion will illuminate paths unseen." },
+            "Earth": { past: "In steady ground, the spirit rooted deep, holding fast through quakes of fate.", future: "A mountain rises—stand firm, for stability will anchor a world in flux." },
+            "Metal": { past: "Through forged veins, the soul rang like metal, tempered by the hammer of time.", future: "A blade shines—sharpen it, for resolve will cut through chaos to truth." },
+            "Water": { past: "In flowing streams, the spirit danced with water, adapting to life’s endless tides.", future: "A river bends—flow with it, for grace will carry to depths of peace." },
+            "Osiris": { past: "In sands of rebirth, Osiris wove the soul through cycles of death and dawn.", future: "A green shoot breaks—rise again, for renewal will defy the grave." },
+            "Anubis": { past: "Beneath twilight gaze, Anubis weighed the heart, guarding steps through shadowlands.", future: "A jackal watches—trust its vigilance, for the path will balance justice and mercy." },
+            "Crocodile": { past: "In primal waters, the Crocodile bore through currents, fierce and unyielding.", future: "A ripple stirs—strike with purpose, for strength will seize the day." },
+            "Serpent": { past: "Through coiled mists, the Serpent shed the past, revealing wisdom in its scales.", future: "A hiss echoes—embrace change, for rebirth will unlock ancient truths." }
         };
 
         const mysticMegFallbacks = {
-            "Aries": "Today, ${name}, a red hawk circles ${country}’s skies—act swiftly, for its cry urges you to seize a moment of power before the sun dips low.",
-            "Taurus": "In ${country}’s stillness today, ${name}, a buried seed hums beneath your feet—pause, listen, for its wisdom offers peace amid the storm.",
-            "Gemini": "Twins of light flicker over ${country} today, ${name}—speak your truth, for their dance reveals a choice that shapes your spirit’s flight.",
-            "Cancer": "A silver crab scuttles in ${country} today, ${name}—guard your heart, for its shell hides a treasure unveiled by the moon’s pull.",
-            "Leo": "Today, ${name}, a golden mane glows in ${country}’s sun—stand tall, for your radiance will draw eyes and hearts to your throne.",
-            "Virgo": "In ${country}’s quiet dusk today, ${name}, a star aligns—order your world, for precision will unveil a path to sacred calm.",
-            "Libra": "A feather falls in ${country} today, ${name}—seek balance, for its gentle sway will guide you through a storm of doubt.",
-            "Scorpio": "Today, ${name}, a black veil lifts in ${country}—dive deep, for the sting of truth will heal what lies buried.",
-            "Sagittarius": "An arrow flies over ${country} today, ${name}—aim high, for its flight will pierce the veil to a truth long sought.",
-            "Capricorn": "In ${country}’s shadow today, ${name}, a goat climbs—step carefully, for your ascent will reveal a peak of purpose.",
-            "Aquarius": "A wild wind sweeps ${country} today, ${name}—dream freely, for its gusts will carry your vision to uncharted skies.",
-            "Pisces": "Today, ${name}, a fish glints in ${country}’s waters—swim deep, for your dreams will surface with a message from the divine."
+            "Aries": "Today, a red hawk circles the skies—act swiftly, for its cry urges seizing a moment of power before the sun dips low.",
+            "Taurus": "In stillness today, a buried seed hums beneath the feet—pause, listen, for its wisdom offers peace amid the storm.",
+            "Gemini": "Twins of light flicker today—speak the truth, for their dance reveals a choice that shapes the spirit’s flight.",
+            "Cancer": "A silver crab scuttles today—guard the heart, for its shell hides a treasure unveiled by the moon’s pull.",
+            "Leo": "Today, a golden mane glows in the sun—stand tall, for radiance will draw eyes and hearts to the throne.",
+            "Virgo": "In quiet dusk today, a star aligns—order the world, for precision will unveil a path to sacred calm.",
+            "Libra": "A feather falls today—seek balance, for its gentle sway will guide through a storm of doubt.",
+            "Scorpio": "Today, a black veil lifts—dive deep, for the sting of truth will heal what lies buried.",
+            "Sagittarius": "An arrow flies today—aim high, for its flight will pierce the veil to a truth long sought.",
+            "Capricorn": "In shadow today, a goat climbs—step carefully, for the ascent will reveal a peak of purpose.",
+            "Aquarius": "A wild wind sweeps today—dream freely, for its gusts will carry vision to uncharted skies.",
+            "Pisces": "Today, a fish glints in the waters—swim deep, for dreams will surface with a message from the divine."
         };
 
         async function fetchReading(url, fallback, sign = null) {
@@ -273,7 +462,7 @@
                     if (content.includes("CORS Anywhere") || content.length < 20) {
                         return fallback;
                     }
-                    return `Today, ${name}, in ${country}, ${content}`;
+                    return content;
                 } catch (error) {
                     console.log(`Fetch failed for ${url}:`, error);
                     return fallback;
@@ -317,77 +506,77 @@
 
             const mysticPresent = await fetchReading(
                 `https://cafeastrology.com/${zodiac.toLowerCase()}dailyhoroscope.html`,
-                mysticMegFallbacks[zodiac].replace("${name}", name).replace("${country}", country),
+                mysticMegFallbacks[zodiac] || "Today, the cosmos spins a riddle—unravel it with open heart and keen eye.",
                 zodiac
             );
             const westernPresent = await fetchReading(
                 `https://www.astrology.com/horoscope/daily/${zodiac.toLowerCase()}.html`,
-                `Today, ${name}, in ${country}, the stars weave a tapestry of mystery—seek the thread of courage to unravel your day’s purpose.`
+                "Today, the stars weave a tapestry of mystery—seek the thread of courage to unravel the day’s purpose."
             );
             const chinesePresent = await fetchReading(
                 `https://www.horoscope.com/us/horoscopes/chinese/horoscope-chinese-daily.aspx?sign=${chineseIndex}`,
-                `Today, ${name}, in ${country}, the lunar breath stirs ${chinese}’s spirit—listen to its quiet roar, for it guides you through shadow.`
+                "Today, lunar breath stirs the spirit—listen to its quiet roar, for it guides through shadow."
             );
             const celticPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, ${celtic}’s branches sway—stand beneath them, for their whispers will root your soul in strength.`
+                `Today, ${celtic}’s branches sway—stand beneath them, for their whispers root the soul in strength.`
             );
             const nativePresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, ${native}’s spirit flies—follow its gaze, for it sees a path through the wilds of your heart.`
+                `Today, ${native}’s spirit flies—follow its gaze, for it sees a path through the wilds of the heart.`
             );
             const nordicPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, ${nordic}’s rune glows—trace its lines, for they carve a message of power in your day.`
+                `Today, ${nordic}’s rune glows—trace its lines, for they carve a message of power in the day.`
             );
             const paganPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, ${pagan}’s wheel turns—step into its circle, for its rhythm will align your spirit with the divine.`
+                `Today, ${pagan}’s wheel turns—step into its circle, for its rhythm aligns the spirit with the divine.`
             );
             const hinduPresent = await fetchReading(
                 `https://www.astrosage.com/horoscope/daily-${zodiac.toLowerCase()}-horoscope.asp`,
-                `Today, ${name}, in ${country}, ${hindu}’s stars sing—heed their melody, for it tunes your soul to cosmic harmony.`
+                `Today, ${hindu}’s stars sing—heed their melody, for it tunes the soul to cosmic harmony.`
             );
             const buddhistPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, ${buddhist} flows through you—breathe its essence, for it balances your spirit’s dance.`
+                `Today, ${buddhist} flows through—breathe its essence, for it balances the spirit’s dance.`
             );
             const egyptianPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, ${egyptian}’s gaze falls—kneel to its wisdom, for it guards your path through the sands of now.`
+                `Today, ${egyptian}’s gaze falls—kneel to its wisdom, for it guards the path through the sands of now.`
             );
             const mayanPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, ${mayan}’s cycle spins—align with its pulse, for it reveals a moment of eternal truth.`
+                `Today, ${mayan}’s cycle spins—align with its pulse, for it reveals a moment of eternal truth.`
             );
             const lifePathPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, your ${lifePath} vibrates—follow its hum, for it lights a step on your sacred journey.`
+                `Today, the ${lifePath} vibrates—follow its hum, for it lights a step on the sacred journey.`
             );
             const angelPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, 333’s trinity surrounds you—open your heart, for its light whispers guidance from above.`
+                "Today, 333’s trinity surrounds—open the heart, for its light whispers guidance from above."
             );
             const countryPresent = await fetchReading(
                 `https://www.tarot.com/daily-horoscope/${zodiac.toLowerCase()}`,
-                `Today, ${name}, in ${country}, the land’s spirit stirs—feel its pulse, for it offers a sign to steer your day’s course.`
+                "Today, the land’s spirit stirs—feel its pulse, for it offers a sign to steer the day’s course."
             );
 
             const readings = [
-                `<div class="symbol">${symbolMap["MysticMeg"]}</div><span style="color:#ff33cc"><strong>Mystic Meg (${zodiac}):</strong><br><span class="past">Past:</span> ${staticReadings["MysticMeg"].past.replace("${name}", name).replace("${country}", country)}<br><span class="present">Present:</span> ${mysticPresent}<br><span class="future">Future:</span> ${staticReadings["MysticMeg"].future.replace("${name}", name).replace("${country}", country)}</span>`,
-                `<div class="symbol">${symbolMap[zodiac]}</div><span style="color:#ff6666"><strong>Western (${zodiac}, ${element}):</strong><br><span class="past">Past:</span> ${staticReadings[zodiac]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, your soul was forged in cosmic fire."}<br><span class="present">Present:</span> ${westernPresent}<br><span class="future">Future:</span> ${staticReadings[zodiac]?.future.replace("${name}", name).replace("${country}", country) || "Destiny awaits you in ${country}, ${name}, written in stardust."}</span>`,
-                `<div class="symbol">${symbolMap[chinese]}</div><span style="color:#ffcc66"><strong>Chinese (${chinese}):</strong><br><span class="past">Past:</span> ${staticReadings[chinese]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, ancient wisdom shaped your dawn."}<br><span class="present">Present:</span> ${chinesePresent}<br><span class="future">Future:</span> ${staticReadings[chinese]?.future.replace("${name}", name).replace("${country}", country) || "The lunar path lights your way in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[celtic]}</div><span style="color:#66ff66"><strong>Celtic (${celtic}):</strong><br><span class="past">Past:</span> ${staticReadings[celtic]?.past.replace("${name}", name).replace("${country}", country) || "Beneath ${country}’s skies, ${name}, roots grew deep."}<br><span class="present">Present:</span> ${celticPresent}<br><span class="future">Future:</span> ${staticReadings[celtic]?.future.replace("${name}", name).replace("${country}", country) || "Branches reach for light in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[native]}</div><span style="color:#66ccff"><strong>Native (${native}):</strong><br><span class="past">Past:</span> ${staticReadings[native]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, spirits guided your steps."}<br><span class="present">Present:</span> ${nativePresent}<br><span class="future">Future:</span> ${staticReadings[native]?.future.replace("${name}", name).replace("${country}", country) || "The wind carries your destiny in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[nordic]}</div><span style="color:#cc66ff"><strong>Nordic (${nordic}):</strong><br><span class="past">Past:</span> ${staticReadings[nordic]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, runes carved your tale."}<br><span class="present">Present:</span> ${nordicPresent}<br><span class="future">Future:</span> ${staticReadings[nordic]?.future.replace("${name}", name).replace("${country}", country) || "Fate weaves ahead in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[pagan]}</div><span style="color:#ff99cc"><strong>Pagan (${pagan}):</strong><br><span class="past">Past:</span> ${staticReadings[pagan]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, cycles turned at your dawn."}<br><span class="present">Present:</span> ${paganPresent}<br><span class="future">Future:</span> ${staticReadings[pagan]?.future.replace("${name}", name).replace("${country}", country) || "The wheel spins toward glory in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[hindu]}</div><span style="color:#66ffff"><strong>Hindu (${hindu}):</strong><br><span class="past">Past:</span> ${staticReadings[hindu]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, stars sang at your birth."}<br><span class="present">Present:</span> ${hinduPresent}<br><span class="future">Future:</span> ${staticReadings[hindu]?.future.replace("${name}", name).replace("${country}", country) || "Cosmic tides lift you in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[buddhist]}</div><span style="color:#ff9966"><strong>Buddhist (${buddhist}):</strong><br><span class="past">Past:</span> ${staticReadings[buddhist]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, elements shaped your origin."}<br><span class="present">Present:</span> ${buddhistPresent}<br><span class="future">Future:</span> ${staticReadings[buddhist]?.future.replace("${name}", name).replace("${country}", country) || "Harmony awaits in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[egyptian]}</div><span style="color:#ccff66"><strong>Egyptian (${egyptian}):</strong><br><span class="past">Past:</span> ${staticReadings[egyptian]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, Nile waters washed your past."}<br><span class="present">Present:</span> ${egyptianPresent}<br><span class="future">Future:</span> ${staticReadings[egyptian]?.future.replace("${name}", name).replace("${country}", country) || "Gods guard your tomorrow in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[mayan]}</div><span style="color:#66cc99"><strong>Mayan (${mayan}):</strong><br><span class="past">Past:</span> ${staticReadings[mayan]?.past.replace("${name}", name).replace("${country}", country) || "In ${country}, ${name}, ancient cycles birthed you."}<br><span class="present">Present:</span> ${mayanPresent}<br><span class="future">Future:</span> ${staticReadings[mayan]?.future.replace("${name}", name).replace("${country}", country) || "Time turns toward your fate in ${country}, ${name}."}</span>`,
-                `<div class="symbol">${symbolMap[lifePath.toString()]}</div><span style="color:#ffcc99"><strong>Life Path (${lifePath}):</strong><br><span class="past">Past:</span> In ${country}, ${name}, your ${lifePath} carved a sacred groove through time’s vast terrain.<br><span class="present">Present:</span> ${lifePathPresent}<br><span class="future">Future:</span> The ${lifePath} illuminates a radiant journey ahead in ${country}, ${name}, guiding your eternal ascent.</span>`,
-                `<div class="symbol">${symbolMap["333"]}</div><span style="color:#99ccff"><strong>Angel Number (333):</strong><br><span class="past">Past:</span> In ${country}, ${name}, the trinity of 3 cradled your spirit, weaving divinity into your dawn.<br><span class="present">Present:</span> ${angelPresent}<br><span class="future">Future:</span> Ascension calls through ${country}’s skies, ${name}, as 333 lifts you to celestial heights.</span>`,
-                `<div class="symbol">${symbolMap[country]}</div><span style="color:#cc99ff"><strong>${country} Omens:</strong><br><span class="past">Past:</span> In ${country}, ${name}, ancient signs etched your birth into the land’s eternal memory.<br><span class="present">Present:</span> ${countryPresent}<br><span class="future">Future:</span> ${country}’s omens align for your glory, ${name}, heralding a future woven with cosmic intent.</span>`
+                `<div class="symbol">${symbolMap["MysticMeg"]}</div><span style="color:#ff33cc"><strong>Mystic Meg (${zodiac}):</strong><br><span class="past">Past:</span> ${staticReadings["MysticMeg"].past}<br><span class="present">Present:</span> ${mysticPresent}<br><span class="future">Future:</span> ${staticReadings["MysticMeg"].future}</span>`,
+                `<div class="symbol">${symbolMap[zodiac]}</div><span style="color:#ff6666"><strong>Western (${zodiac}, ${element}):</strong><br><span class="past">Past:</span> ${staticReadings[zodiac]?.past || "The soul was forged in cosmic fire."}<br><span class="present">Present:</span> ${westernPresent}<br><span class="future">Future:</span> ${staticReadings[zodiac]?.future || "Destiny awaits, written in stardust."}</span>`,
+                `<div class="symbol">${symbolMap[chinese]}</div><span style="color:#ffcc66"><strong>Chinese (${chinese}):</strong><br><span class="past">Past:</span> ${staticReadings[chinese]?.past || "Ancient wisdom shaped the dawn."}<br><span class="present">Present:</span> ${chinesePresent}<br><span class="future">Future:</span> ${staticReadings[chinese]?.future || "The lunar path lights the way."}</span>`,
+                `<div class="symbol">${symbolMap[celtic]}</div><span style="color:#66ff66"><strong>Celtic (${celtic}):</strong><br><span class="past">Past:</span> ${staticReadings[celtic]?.past || "Roots grew deep beneath the skies."}<br><span class="present">Present:</span> ${celticPresent}<br><span class="future">Future:</span> ${staticReadings[celtic]?.future || "Branches reach for tomorrow’s light."}</span>`,
+                `<div class="symbol">${symbolMap[native]}</div><span style="color:#66ccff"><strong>Native (${native}):</strong><br><span class="past">Past:</span> ${staticReadings[native]?.past || "Spirits guided the first steps."}<br><span class="present">Present:</span> ${nativePresent}<br><span class="future">Future:</span> ${staticReadings[native]?.future || "The wind carries destiny forward."}</span>`,
+                `<div class="symbol">${symbolMap[nordic]}</div><span style="color:#cc66ff"><strong>Nordic (${nordic}):</strong><br><span class="past">Past:</span> ${staticReadings[nordic]?.past || "Runes carved an ancient tale."}<br><span class="present">Present:</span> ${nordicPresent}<br><span class="future">Future:</span> ${staticReadings[nordic]?.future || "Fate’s threads weave ahead."}</span>`,
+                `<div class="symbol">${symbolMap[pagan]}</div><span style="color:#ff99cc"><strong>Pagan (${pagan}):</strong><br><span class="past">Past:</span> ${staticReadings[pagan]?.past || "Cycles turned at the dawn."}<br><span class="present">Present:</span> ${paganPresent}<br><span class="future">Future:</span> ${staticReadings[pagan]?.future || "The wheel spins toward glory."}</span>`,
+                `<div class="symbol">${symbolMap[hindu]}</div><span style="color:#66ffff"><strong>Hindu (${hindu}):</strong><br><span class="past">Past:</span> ${staticReadings[hindu]?.past || "Stars sang at the birth."}<br><span class="present">Present:</span> ${hinduPresent}<br><span class="future">Future:</span> ${staticReadings[hindu]?.future || "Cosmic tides lift the spirit forward."}</span>`,
+                `<div class="symbol">${symbolMap[buddhist]}</div><span style="color:#ff9966"><strong>Buddhist (${buddhist}):</strong><br><span class="past">Past:</span> ${staticReadings[buddhist]?.past || "Elements shaped the origin."}<br><span class="present">Present:</span> ${buddhistPresent}<br><span class="future">Future:</span> ${staticReadings[buddhist]?.future || "Harmony awaits ahead."}</span>`,
+                `<div class="symbol">${symbolMap[egyptian]}</div><span style="color:#ccff66"><strong>Egyptian (${egyptian}):</strong><br><span class="past">Past:</span> ${staticReadings[egyptian]?.past || "Nile waters washed the past."}<br><span class="present">Present:</span> ${egyptianPresent}<br><span class="future">Future:</span> ${staticReadings[egyptian]?.future || "Gods guard tomorrow’s path."}</span>`,
+                `<div class="symbol">${symbolMap[mayan]}</div><span style="color:#66cc99"><strong>Mayan (${mayan}):</strong><br><span class="past">Past:</span> ${staticReadings[mayan]?.past || "Ancient cycles birthed the soul."}<br><span class="present">Present:</span> ${mayanPresent}<br><span class="future">Future:</span> ${staticReadings[mayan]?.future || "Time turns toward fate."}</span>`,
+                `<div class="symbol">${symbolMap[lifePath.toString()]}</div><span style="color:#ffcc99"><strong>Life Path (${lifePath}):</strong><br><span class="past">Past:</span> The ${lifePath} carved a sacred groove through time’s vast terrain.<br><span class="present">Present:</span> ${lifePathPresent}<br><span class="future">Future:</span> The ${lifePath} illuminates a radiant journey ahead, guiding eternal ascent.</span>`,
+                `<div class="symbol">${symbolMap["333"]}</div><span style="color:#99ccff"><strong>Angel Number (333):</strong><br><span class="past">Past:</span> The trinity of 3 cradled the spirit, weaving divinity into the dawn.<br><span class="present">Present:</span> ${angelPresent}<br><span class="future">Future:</span> Ascension calls through the skies, lifting to celestial heights.</span>`,
+                `<div class="symbol">${symbolMap[country]}</div><span style="color:#cc99ff"><strong>${country} Omens:</strong><br><span class="past">Past:</span> Ancient signs etched the birth into the land’s eternal memory.<br><span class="present">Present:</span> ${countryPresent}<br><span class="future">Future:</span> Omens align for glory, heralding a future woven with cosmic intent.</span>`
             ];
 
             readingList.innerHTML = readings.map((item, i) => `<li style="animation-delay: ${i * 0.3}s;">${item}</li>`).join('');
@@ -397,11 +586,11 @@
         function saveReading() {
             const name = document.getElementById("name").value || "Unknown";
             const readingList = document.getElementById("reading-list").innerHTML;
-            const textContent = `Philo Siphers Horoscope for ${name}\n\n${readingList.replace(/<[^>]+>/g, '').replace(/<br>/g, '\n')}`;
+            const textContent = `Dingles Readings for ${name}\n\n${readingList.replace(/<[^>]+>/g, '').replace(/<br>/g, '\n')}`;
             const textBlob = new Blob([textContent], { type: "text/plain" });
             const textLink = document.createElement("a");
             textLink.href = URL.createObjectURL(textBlob);
-            textLink.download = `${name}_horoscope.txt`;
+            textLink.download = `${name}_readings.txt`;
             textLink.click();
 
             const { jsPDF } = window.jspdf;
@@ -409,7 +598,7 @@
             doc.setFont("helvetica");
             doc.setFontSize(12);
             doc.setTextColor(255, 204, 0);
-            doc.text(`Philo Siphers Horoscope for ${name}`, 10, 10);
+            doc.text(`Dingles Readings for ${name}`, 10, 10);
             doc.setTextColor(255, 255, 255);
             let y = 20;
             document.querySelectorAll("#reading-list li span").forEach((span) => {
@@ -418,13 +607,13 @@
                 y += 15;
                 if (y > 270) { doc.addPage(); y = 10; }
             });
-            doc.save(`${name}_horoscope.pdf`);
+            doc.save(`${name}_readings.pdf`);
         }
 
         function shareReading() {
             const name = document.getElementById("name").value || "Unknown";
             const readingList = document.getElementById("reading-list").innerHTML;
-            const textContent = `Philo Siphers Horoscope for ${name}\n\n${readingList.replace(/<[^>]+>/g, '').replace(/<br>/g, '\n')}`;
+            const textContent = `Dingles Readings for ${name}\n\n${readingList.replace(/<[^>]+>/g, '').replace(/<br>/g, '\n')}`;
             navigator.clipboard.writeText(textContent).then(() => {
                 alert("Your cosmic prophecy has been copied to the clipboard!");
             }).catch(() => {
